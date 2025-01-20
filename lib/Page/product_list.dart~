@@ -223,7 +223,7 @@ class _ProductPage extends State<ProductPage> {
                           width: 100,
                         ),
                         Expanded(
-
+                          
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

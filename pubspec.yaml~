@@ -35,8 +35,6 @@ dependencies:
   shared_preferences: ^2.3.3
   mysql1: ^0.20.0
   google_maps_flutter: ^2.3.0
-  geocoding: ^2.2.0
-  geocoder: ^0.2.1
   location: ^4.4.0
   geolocator: ^9.0.2
   flutter:

@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'package:project_app/utils/BtnPage.dart';
+import '../../Page/db_helper.dart';
+
+class OrderHistory extends StatefulWidget {
+  @override
+  _OrderHistoryState createState() => _OrderHistoryState();
+}
+
+class _OrderHistoryState extends State<OrderHistory> {
+  final dbHelper = DBHelper();
+  List<Map<String, dynamic>> orderHistory = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadOrderHistory();
+  }
+
+  Future<void> _loadOrderHistory() async {
+    final history = await dbHelper.getOrderHistory();
+    setState(() {
+      orderHistory = history;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ประวัติสั่งซื้อ'),
+        backgroundColor: Colors.blue,
+      ),
+      body: orderHistory.isEmpty
+          ? Center(child: Text('ไม่มีประวัติการสั่งซื้อ'))
+          : ListView.builder(
+        itemCount: orderHistory.length,
+        itemBuilder: (context, index) {
+          final order = orderHistory[index];
+          return Card(
+            margin: EdgeInsets.all(8.0),
+            child: ListTile(
+              title: Text('Order ID: ${order['orderId']}'),
+              subtitle: Text(
+                'Items: ${order['items']}\n'
+                    'Date: ${order['date']}\n'
+                    'Total: ${order['totalPrice']} บาท',
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

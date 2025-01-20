@@ -288,7 +288,7 @@ class _CartPageState extends State<CartPage> {
                     minimumSize: Size(double.infinity, 50),
                     backgroundColor: Colors.blue,
                   ),
-                  child: Text("ชำระเงิน",style: TextStyle(fontSize: 20,color: Colors.white),),
+                  child: Text("ชำระเงิน",style: TextStyle(fontSize: 20,color: Colors.white)),
                 ),
               ],
             ),
